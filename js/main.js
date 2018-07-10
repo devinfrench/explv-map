@@ -1,19 +1,42 @@
 'use strict';
 
-import {Position} from './Position.js';
-import {Path} from './Path.js';
-import {Area} from './Area.js';
-import {Areas} from './Areas.js';
-import {PolyArea} from './PolyArea.js';
-import {Grid} from './Grid.js';
-import {highlight} from './SyntaxHighlighter.js';
-import {locations} from './locations.js';
-import {CanvasLayer} from './L.CanvasLayer.js';
+import {
+    Position
+} from './Position.js';
+import {
+    Path
+} from './Path.js';
+import {
+    Area
+} from './Area.js';
+import {
+    Areas
+} from './Areas.js';
+import {
+    PolyArea
+} from './PolyArea.js';
+import {
+    Grid
+} from './Grid.js';
+import {
+    highlight
+} from './SyntaxHighlighter.js';
+import {
+    locations
+} from './locations.js';
+import {
+    CanvasLayer
+} from './L.CanvasLayer.js';
 
 $(document).ready(function () {
-// TODO: Stop being lazy and clean up this damn file
+    // TODO: Stop being lazy and clean up this damn file
 
-    var OutputType = Object.freeze({ARRAY: 1, LIST: 2, ARRAYS_AS_LIST: 3, RAW: 4});
+    var OutputType = Object.freeze({
+        ARRAY: 1,
+        LIST: 2,
+        ARRAYS_AS_LIST: 3,
+        RAW: 4
+    });
     var outputType = OutputType.ARRAY;
 
     var map = L.map('map', {
@@ -33,7 +56,7 @@ $(document).ready(function () {
             var container = L.DomUtil.create('div');
             container.id = 'titleLabel';
             container.href = 'http://osbot.org/forum/user/192661-explv/';
-            container.innerHTML = "<span id='explv'>Explv</span>'s Map";
+            container.innerHTML = "<span id='explv'>Explv</span>'s Map (TRiBot)";
 
             L.DomEvent.disableClickPropagation(container);
             return container;
@@ -278,11 +301,9 @@ $(document).ready(function () {
     var regionLabelsEnabled = false;
 
     var myCustomCanvasDraw = function () {
-        this.onLayerDidMount = function () {
-        };
+        this.onLayerDidMount = function () {};
 
-        this.onLayerWillUnmount = function () {
-        };
+        this.onLayerWillUnmount = function () {};
 
         this.setData = function (data) {
             this.needRedraw();

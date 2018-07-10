@@ -1,7 +1,11 @@
 'use strict';
 
-import {Drawable} from './Drawable.js';
-import {Position} from './Position.js';
+import {
+    Drawable
+} from './Drawable.js';
+import {
+    Position
+} from './Position.js';
 
 export class Area extends Drawable {
 
@@ -49,10 +53,10 @@ export class Area extends Drawable {
     }
 
     toJavaCode() {
-        var areaDef = `new Area(${this.startPosition.x}, ${this.startPosition.y}, ${this.endPosition.x}, ${this.endPosition.y})`;
-        if (this.startPosition.z > 0) {
-            areaDef += `.setPlane(${this.startPosition.z})`;
-        }
+        var areaDef = "new RSArea(";
+        areaDef += `\n    new RSTile(${this.startPosition.x}, ${this.startPosition.y}, ${this.startPosition.z}), `;
+        areaDef += `\n    new RSTile(${this.endPosition.x}, ${this.endPosition.y}, ${this.endPosition.z})`;
+        areaDef += "\n)";
         return areaDef;
     }
 

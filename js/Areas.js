@@ -1,7 +1,11 @@
 'use strict';
 
-import {Area} from './Area.js';
-import {Position} from './Position.js';
+import {
+    Area
+} from './Area.js';
+import {
+    Position
+} from './Position.js';
 
 export class Areas {
 
@@ -64,9 +68,9 @@ export class Areas {
 
     toArrayString() {
         if (this.areas.length === 1) {
-            return "Area area = " + this.areas[0].toJavaCode() + ";";
+            return "RSArea area = " + this.areas[0].toJavaCode() + ";";
         } else if (this.areas.length > 1) {
-            var output = "Area[] area = {\n";
+            var output = "RSArea[] area = {\n";
             var numAreas = this.areas.length;
             $.each(this.areas, function (index, area) {
                 output += "    " + area.toJavaCode();
@@ -84,9 +88,9 @@ export class Areas {
 
     toListString() {
         if (this.areas.length === 1) {
-            return this.areas[0].toJavaCode() + ";";
+            return this.toArrayString();
         } else if (this.areas.length > 1) {
-            var output = "List&lt;Area&gt; area = new ArrayList<>();\n";
+            var output = "List&lt;RSArea&gt; area = new ArrayList<>();\n";
             $.each(this.areas, function (index, area) {
                 output += "area.add(" + area.toJavaCode() + ");\n";
             });
@@ -96,32 +100,10 @@ export class Areas {
     }
 
     toArraysAsListString() {
-
-        if (this.areas.length === 1) {
-            return this.areas[0].toJavaCode() + ";";
-        } else if (this.areas.length > 1) {
-            var output = "List&lt;Area&gt; area = Arrays.asList(\n" +
-                "    new Area[]{\n";
-            var numAreas = this.areas.length;
-            $.each(this.areas, function (index, area) {
-                output += "        " + area.toJavaCode();
-                if (index !== numAreas - 1) {
-                    output += ",";
-                }
-                output += "\n";
-            });
-            output += "    }\n";
-            output += ");";
-            return output;
-        }
         return "";
     }
 
     toRawString() {
-        var output = "";
-        for (var i = 0; i < this.areas.length; i++) {
-            output += `${this.areas[i].startPosition.x},${this.areas[i].startPosition.y},${this.areas[i].endPosition.x},${this.areas[i].endPosition.y}\n`;
-        }
-        return output;
+        return "";
     }
 }

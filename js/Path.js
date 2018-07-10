@@ -1,6 +1,8 @@
 'use strict';
 
-import {Position} from './Position.js';
+import {
+    Position
+} from './Position.js';
 
 export class Path {
 
@@ -64,7 +66,9 @@ export class Path {
     }
 
     createPolyline(startPosition, endPosition) {
-        return L.polyline([startPosition.toCentreLatLng(this.map), endPosition.toCentreLatLng(this.map)], {clickable: false});
+        return L.polyline([startPosition.toCentreLatLng(this.map), endPosition.toCentreLatLng(this.map)], {
+            clickable: false
+        });
     }
 
     getLocalWalkerPositions(startPosition, endPosition) {
@@ -108,9 +112,9 @@ export class Path {
         if (this.positions.length == 1) {
             return this.positions[0].toJavaCode();
         } else if (this.positions.length > 1) {
-            var output = "Position[] path = {\n";
+            var output = "RSTile[] path = {\n";
             for (var i = 0; i < this.positions.length; i++) {
-                output += `    new Position(${this.positions[i].x}, ${this.positions[i].y}, ${this.positions[i].z})`;
+                output += `    new RSTile(${this.positions[i].x}, ${this.positions[i].y}, ${this.positions[i].z})`;
                 if (i != this.positions.length - 1) output += ",";
                 output += "\n";
             }
@@ -124,9 +128,9 @@ export class Path {
         if (this.positions.length == 1) {
             return this.positions[0].toJavaCode();
         } else if (this.positions.length > 1) {
-            var output = "List&lt;Position&gt; path = new ArrayList<>();\n";
+            var output = "List&lt;RSTile&gt; path = new ArrayList<>();\n";
             for (var i = 0; i < this.positions.length; i++) {
-                output += `path.add(new Position(${this.positions[i].x}, ${this.positions[i].y}, ${this.positions[i].z}));\n`;
+                output += `path.add(new RSTile(${this.positions[i].x}, ${this.positions[i].y}, ${this.positions[i].z}));\n`;
             }
             return output;
         }
@@ -137,9 +141,9 @@ export class Path {
         if (this.positions.length == 1) {
             return this.positions[0].toJavaCode();
         } else if (this.positions.length > 1) {
-            var output = "List&lt;Position&gt; path = Arrays.asList(\n    new Position[]{\n";
+            var output = "List&lt;RSTile&gt; path = Arrays.asList(\n    new RSTile[]{\n";
             for (var i = 0; i < this.positions.length; i++) {
-                output += `        new Position(${this.positions[i].x}, ${this.positions[i].y}, ${this.positions[i].z})`;
+                output += `        new RSTile(${this.positions[i].x}, ${this.positions[i].y}, ${this.positions[i].z})`;
                 if (i != this.positions.length - 1) output += ",";
                 output += "\n";
             }

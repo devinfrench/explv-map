@@ -1,7 +1,13 @@
 'use strict';
 
-import {Drawable} from './Drawable.js';
-import {Position, RS_TILE_WIDTH_PX, RS_TILE_HEIGHT_PX} from './Position.js';
+import {
+    Drawable
+} from './Drawable.js';
+import {
+    Position,
+    RS_TILE_WIDTH_PX,
+    RS_TILE_HEIGHT_PX
+} from './Position.js';
 
 export class PolyArea extends Drawable {
 
@@ -97,31 +103,24 @@ export class PolyArea extends Drawable {
         if (this.positions.length == 0) {
             return "";
         }
-        var output = "Area area = new Area(\n    new int[][]{";
+        var output = "RSArea area = new RSArea(new RSTile[] {";
         for (var i = 0; i < this.positions.length; i++) {
-            output += `\n        { ${this.positions[i].x}, ${this.positions[i].y} }`;
+            output += `\n    new RSTile(${this.positions[i].x}, ${this.positions[i].y}, ${this.positions[i].z})`;
             if (i !== this.positions.length - 1) {
                 output += ",";
             }
         }
-        output += "\n    }\n)";
-        if (this.positions.length > 0 && this.positions[0].z > 0) {
-            output += `.setPlane(${this.positions[0].z})`;
-        }
+        output += "\n})";
         output += ";";
         return output;
     }
 
     toRawString() {
         var output = "";
-        for (var i = 0; i < this.positions.length; i++) {
-            output += `${this.positions[i].x},${this.positions[i].y}\n`;
-        }
         return output;
     }
 
     getName() {
         return "Area";
     }
-}
-;
+};

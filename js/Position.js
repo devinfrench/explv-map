@@ -1,9 +1,12 @@
 'use strict';
 
-import {Drawable} from './Drawable.js';
+import {
+    Drawable
+} from './Drawable.js';
 
 export const MAP_HEIGHT_PX = 270080; // Total height of the map in px at max zoom level
-export const RS_TILE_WIDTH_PX = 32, RS_TILE_HEIGHT_PX = 32; // Width and height in px of an rs tile at max zoom level
+export const RS_TILE_WIDTH_PX = 32,
+    RS_TILE_HEIGHT_PX = 32; // Width and height in px of an rs tile at max zoom level
 export const RS_OFFSET_X = 1152; // Amount to offset x coordinate to get correct value
 export const RS_OFFSET_Y = 9928; // Amount to offset y coordinate to get correct value
 
@@ -61,7 +64,7 @@ export class Position extends Drawable {
     }
 
     toJavaCode() {
-        return `Position position = new Position(${this.x}, ${this.y}, ${this.z});`;
+        return `RSTile tile = new RSTile(${this.x}, ${this.y}, ${this.z});`;
     }
 
     getName() {
@@ -71,5 +74,4 @@ export class Position extends Drawable {
     equals(position) {
         return this.x === position.x && this.y === position.y && this.z === position.z;
     }
-}
-;
+};
