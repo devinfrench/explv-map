@@ -100,7 +100,7 @@ export class Path {
     fromString(text) {
         this.removeAll();
         text = text.replace(/\s/g, '');
-        var posPattern = /newPosition\((\d+,\d+,\d)\)/mg;
+        var posPattern = /newRSTile\((\d+,\d+,\d)\)/mg;
         var match;
         while ((match = posPattern.exec(text))) {
             var values = match[1].split(",");
